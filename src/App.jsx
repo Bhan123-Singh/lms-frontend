@@ -10,7 +10,7 @@ import NotFound from './Pages/NotFound';
 import SignUp from './Pages/SignUp';
 import Login from './Pages/Login';
 import CourseList from './Pages/CourseList'
-import Contact from './Pages/contact';
+import Contact from './Pages/Contact';
 import Denied from './Pages/Denied';
 import CourseDescription from './Pages/Course/CourseDescription';
 import RequireAuth from './components/Auth/RequireAuth';
