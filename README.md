@@ -3,7 +3,7 @@
  step-1 Clone the Project
 
  ```
- git clone https://github.com/Bhan123-Singh/library-frontend.git
+ https://github.com/Bhan123-Singh/lms-frontend.git
 
  ```
  step-2  move in the directory
