@@ -9,11 +9,12 @@ import toast from "react-hot-toast";
 
 function AddLecture(){
        // takes the courseDetails of state to location
-       const courseDetails=useLocation().state;
+       const location =useLocation();
+       const courseDetails = location?.state ;
      const   dispatch=useDispatch();
      const navigate=useNavigate();
      const [userInput,setUserInput]=useState({
-        id:courseDetails._id,
+        id:courseDetails._id  || "" ,
         lecture:undefined,
         title:'',
         description:'',
@@ -46,7 +47,16 @@ function AddLecture(){
           toast.error('All fields are mandatory')
         return;            
         }
-        const response=await dispatch(addCourseLecture(userInput));
+
+         const formData = new FormData();
+         formData.append("id", userInput.id);
+         formData.append("title", userInput.title);
+         formData.append("description", userInput.description);
+         formData.append("lecture", userInput.lecture);
+
+         const response = await dispatch(addCourseLecture(formData));
+
+        
         if(response?.payload?.success){
           navigate(-1);
             setUserInput({ id:courseDetails._id,
@@ -112,7 +122,7 @@ return(
           className="font-semibold text-xl cursor-pointer">Choose your video
             <input type="file" className="hidden" id='lecture' name="lecture"
             onChange={handleVideo}
-            accept="video/mp4 video/x-mp4/video/*"/>
+            accept="video/*"/>
           </label>
          </div>
         )}

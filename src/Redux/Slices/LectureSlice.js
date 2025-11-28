@@ -7,14 +7,15 @@ const  initialState={
 }
 
 // define the all lecture asyncthunk here
-export  const getCourseLectures=createAsyncThunk('/course/lecture/get',async(cid)=>{
-    try{ const response=axiosInstance.get(`/courses/${cid}`);
+export  const getCourseLectures=createAsyncThunk('/course/lecture/get',async(id)=>{
+    try{ const response=axiosInstance.get(`/courses/${id}`);
     toast.promise(response,{
         loading:'Fetching course lectures',
         success:'Lectures fetched successfully',
         error:'Failed to load th lectures'
     });
-    return(await response).data;
+    const result = await response;
+    return result.data.lectures;
 
     }
     catch(error){
@@ -23,14 +24,11 @@ export  const getCourseLectures=createAsyncThunk('/course/lecture/get',async(cid
     }
 });
 // addCourseLecture
-export  const addCourseLecture=createAsyncThunk('/course/lecture/add',async(data)=>{
+export  const addCourseLecture=createAsyncThunk('/course/lecture/add',async(formData)=>{
     try{ 
-        const formData=new FormData();
-        formData.append('lecture',data.lecture);
-        formData.append('title',data.title);
-        formData.append('description',data.description);
+        
        
-        const response=axiosInstance.post(`/courses/${data.id}`,formData);
+    const response=axiosInstance.post(`/courses/${formData.get("id")}`,formData);
     toast.promise(response,{
         loading:'adding course lecture',
         success:'Lecture added successfully',
@@ -73,7 +71,7 @@ const lectureSlice= createSlice({
     extraReducers:(builder)=>{
         builder
         .addCase(getCourseLectures.fulfilled,(state,action)=>{
-            console.log(action);
+            console.log(action.payload);
             state.lectures = action?.payload?.course?.lectures;
         })
         .addCase(addCourseLecture.fulfilled,(state,action)=>{
