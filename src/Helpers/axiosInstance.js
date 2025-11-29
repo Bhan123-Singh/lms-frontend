@@ -1,6 +1,6 @@
 import axios from 'axios';
-const Base_URL="https://lms-backend-sand-five.vercel.app/api/v1";
+const Base_URL="https://lms-backend-two-sand.vercel.app/api/v1";
 const axiosInstance=axios.create();
 axiosInstance.defaults.baseURL=Base_URL;
 axiosInstance.defaults.withCredentials=true;
-export default axiosInstance
+export default axiosInstance    
