@@ -74,118 +74,123 @@ function CreateCourse(){// it is a function of create course
 // creating ui
 return(
     <HomeLayout>
-        <div className="flex  items-center justify-center h-[100vh]">
-        <form onSubmit={onFormSubmit} 
-       className="flex flex-col justify-center gap-5 rounded-lg p-4 text-white w-[700px] my-10 shadow-[0_0_10px_black] ralative"
-       >
+        <div className="flex items-center justify-center min-h-screen px-4">
+  <form
+    onSubmit={onFormSubmit}
+    className="flex flex-col justify-center gap-6 rounded-lg p-6 text-white w-full max-w-3xl my-10 shadow-[0_0_10px_black] relative bg-[#1f1f1f]"
+  >
+    <Link className="absolute top-4 left-4 text-2xl link text-accent cursor-pointer">
+      <AiOutlineArrowLeft />
+    </Link>
 
-        <Link className="absolute top-8 text-2xl link text-accent cursor-pointer">
-        <AiOutlineArrowLeft/>
-        </Link>
-        <h1 className="text-center text-2xl font-bold">
-            Create New Course
-        </h1>
+    <h1 className="text-center text-2xl font-bold">Create New Course</h1>
 
-        <main className="grid grid-cols gap-x-10">
-        <div className="gap-y-6">
-            <div>
-                <label htmlFor="image_uploads" className="cursor-pointer">
-                    {/* it means take the image from previewimage if exist but if it is not exist preview image then execute the img tag  */}
-                    {userInput.previewImage ? (
-                        <img className="w-full h-44 m-auto border" 
-                        src={userInput.previewImage}>
+    {/* Responsive Two Column Grid */}
+    <main className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* Left section (image + title) */}
+      <div className="flex flex-col gap-6">
+        <div>
+          <label htmlFor="image_uploads" className="cursor-pointer block">
+            {userInput.previewImage ? (
+              <img
+                className="w-full h-44 object-cover border rounded-md"
+                src={userInput.previewImage}
+              />
+            ) : (
+              <div className="w-full h-44 flex items-center justify-center border rounded-md text-center px-2">
+                <h1 className="font-bold text-lg">
+                  Upload Your Course Thumbnail
+                </h1>
+              </div>
+            )}
+          </label>
 
-                        </img>
-                    ):(
-
-                       <div className="w-full h-44 m-auto flex items-center justify-center border">
-                        <h1 className="font-bold text-lg">
-                            Upload Your Course Thumbnail
-                        </h1>
-
-                       </div>              )}
-                </label>
-
-                <input className="hidden"
-                type="file"
-                id="image_uploads"
-                accept=".jpg,.jpeg,.png"
-                name="image_uploads"
-                onChange={handleImageUpload}>
-                </input>
-
-            </div>
-            <div className="flex flex-col gap-1">
-                <label htmlFor="title" className="text-lg font-semibold">
-                    Course Title
-                </label>
-                <input type="text" required
-                name='title'
-                id='title'
-                placeholder="Enter Course Title"
-                className="bg-transparent px-2 py-1 border"
-                value={userInput.title}
-                onChange={handleUserInput}
-                />
-            </div>
-    
-     </div>
-
-     <div className="flex flex-col gap-1">
-
-     <div className="flex flex-col gap-1">
-                <label htmlFor="createdBy" className="text-lg font-semibold">
-                    Course Instructor
-                </label>
-                <input type="text" required
-                name='createdBy'
-                id='createdBy'
-                placeholder="Enter Course Instructor"
-                className="bg-transparent px-2 py-1 border"
-                value={userInput.createdBy}
-                onChange={handleUserInput}
-                />
-            </div>
-
-            <div className="flex flex-col gap-1">
-                <label htmlFor="category" className="text-lg font-semibold">
-                    Course Category
-                </label>
-                <input type="text" required
-                name='category'
-                id='category'
-                placeholder="Enter Course category"
-                className="bg-transparent px-2 py-1 border"
-                value={userInput.category}
-                onChange={handleUserInput}
-                />
-            </div>
-
-            <div className="flex flex-col gap-1">
-                <label htmlFor="description" className="text-lg font-semibold">
-                    Course Description
-                </label>
-                <textarea type="text" required
-                name='description'
-                id='description'
-                placeholder="Enter Course description"
-                className="bg-transparent px-2 py-1 border h-24 overflow-y-scroll resize-none"
-                value={userInput.description}
-                onChange={handleUserInput}
-                />
-            </div>
-
-     </div>
-        </main>
-
-        <button type='submit' className="w-full bg-yellow-600 hover:bg-yellow-500 transition-all ease-in-out duration-300 py-2 rounded-sm font-semibold text-lg cursor-pointer">
-            Create Course
-
-        </button>
-
-       </form>
-
+          <input
+            className="hidden"
+            type="file"
+            id="image_uploads"
+            accept=".jpg,.jpeg,.png"
+            name="image_uploads"
+            onChange={handleImageUpload}
+          />
         </div>
+
+        <div className="flex flex-col gap-1">
+          <label htmlFor="title" className="text-lg font-semibold">
+            Course Title
+          </label>
+          <input
+            type="text"
+            required
+            name="title"
+            id="title"
+            placeholder="Enter Course Title"
+            className="bg-transparent px-3 py-2 border rounded-md"
+            value={userInput.title}
+            onChange={handleUserInput}
+          />
+        </div>
+      </div>
+
+      {/* Right section (instructor + category + description) */}
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-1">
+          <label htmlFor="createdBy" className="text-lg font-semibold">
+            Course Instructor
+          </label>
+          <input
+            type="text"
+            required
+            name="createdBy"
+            id="createdBy"
+            placeholder="Enter Instructor Name"
+            className="bg-transparent px-3 py-2 border rounded-md"
+            value={userInput.createdBy}
+            onChange={handleUserInput}
+          />
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <label htmlFor="category" className="text-lg font-semibold">
+            Course Category
+          </label>
+          <input
+            type="text"
+            required
+            name="category"
+            id="category"
+            placeholder="Enter Course Category"
+            className="bg-transparent px-3 py-2 border rounded-md"
+            value={userInput.category}
+            onChange={handleUserInput}
+          />
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <label htmlFor="description" className="text-lg font-semibold">
+            Course Description
+          </label>
+          <textarea
+            required
+            name="description"
+            id="description"
+            placeholder="Enter Course Description"
+            className="bg-transparent px-3 py-2 border rounded-md h-24 overflow-y-scroll resize-none"
+            value={userInput.description}
+            onChange={handleUserInput}
+          />
+        </div>
+      </div>
+    </main>
+
+    <button
+      type="submit"
+      className="w-full bg-yellow-600 hover:bg-yellow-500 transition-all ease-in-out duration-300 py-3 rounded-md font-semibold text-lg cursor-pointer"
+    >
+      Create Course
+    </button>
+  </form>
+</div>
        
     </HomeLayout>
 )
