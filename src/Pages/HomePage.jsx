@@ -1,5 +1,6 @@
 import HomeLayout from "../Layouts/HomeLayout"
 import  HomePageimage from '../assets/images/coolimg-9.jpg'
+
 import { Link } from "react-router-dom"
 
 function HomePage(){
