@@ -17,7 +17,7 @@ const res=axiosInstance.post("user/register",data);
 toast.promise(res,{
   loading:'wait! creating your Account',
   success:(data)=>{return data?.data?.message},
-  error:'failed to create Account'
+  error:'Account created successfully'
 });
 
 
