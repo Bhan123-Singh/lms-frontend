@@ -37,7 +37,7 @@ async function handlelogout(e){
        <div className="min-h-[90vh]">
 
 {/* -------- NAV FOR LARGE SCREENS -------- */}
-<div className="hidden  lg:flex justify-between items-center bg-gray-700 text-white px-8 py-4">
+<div className="hidden  md:flex justify-between items-center bg-gray-700 text-white px-8 py-4">
    <div className="flex items-center justify-center">
   <img
     src={Logo}
@@ -84,7 +84,7 @@ async function handlelogout(e){
 
 
 {/* -------- DRAWER FOR SMALL & MEDIUM SCREENS -------- */}
-<div className="drawer absolute left-8 z-50 w-fit lg:hidden">
+<div className="drawer absolute left-6 z-50 w-fit md:hidden">
     <input type="checkbox" className="drawer-toggle" id="my-drawer" />
     <div className="drawer-content">
         
