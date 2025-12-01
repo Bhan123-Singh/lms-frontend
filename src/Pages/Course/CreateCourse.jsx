@@ -74,31 +74,45 @@ function CreateCourse(){// it is a function of create course
 // creating ui
 return(
     <HomeLayout>
-        <div className="flex items-center justify-center min-h-screen px-4">
+    
+         
+<div className="flex items-center justify-center min-h-screen px-3 sm:px-6 md:px-10 lg:px-16 xl:px-24 bg-[#121212]">
   <form
     onSubmit={onFormSubmit}
-    className="flex flex-col justify-center gap-6 rounded-lg p-6 text-white w-full max-w-3xl my-10 shadow-[0_0_10px_black] relative bg-[#1f1f1f]"
+    className="
+      flex flex-col gap-8 
+      rounded-lg p-5 sm:p-8 md:p-10 
+      text-white w-full 
+      max-w-2xl md:max-w-4xl 
+      my-12 shadow-[0_0_15px_rgba(0,0,0,0.7)]
+      relative bg-[#1f1f1f]
+    "
   >
+    {/* Back button */}
     <Link className="absolute top-4 left-4 text-2xl link text-accent cursor-pointer">
       <AiOutlineArrowLeft />
     </Link>
 
-    <h1 className="text-center text-2xl font-bold">Create New Course</h1>
+    <h1 className="text-center text-2xl sm:text-3xl font-bold">
+      Create New Course
+    </h1>
 
-    {/* Responsive Two Column Grid */}
+    {/* Grid layout */}
     <main className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {/* Left section (image + title) */}
+      
+      {/* LEFT */}
       <div className="flex flex-col gap-6">
+        {/* Thumbnail */}
         <div>
           <label htmlFor="image_uploads" className="cursor-pointer block">
             {userInput.previewImage ? (
               <img
-                className="w-full h-44 object-cover border rounded-md"
+                className="w-full h-40 sm:h-48 md:h-52 lg:h-56 object-cover border rounded-md"
                 src={userInput.previewImage}
               />
             ) : (
-              <div className="w-full h-44 flex items-center justify-center border rounded-md text-center px-2">
-                <h1 className="font-bold text-lg">
+              <div className="w-full h-40 sm:h-48 md:h-52 lg:h-56 flex items-center justify-center border rounded-md text-center px-3">
+                <h1 className="font-semibold text-base sm:text-lg">
                   Upload Your Course Thumbnail
                 </h1>
               </div>
@@ -115,6 +129,7 @@ return(
           />
         </div>
 
+        {/* Title */}
         <div className="flex flex-col gap-1">
           <label htmlFor="title" className="text-lg font-semibold">
             Course Title
@@ -125,15 +140,16 @@ return(
             name="title"
             id="title"
             placeholder="Enter Course Title"
-            className="bg-transparent px-3 py-2 border rounded-md"
+            className="bg-transparent px-3 py-2 border rounded-md focus:outline-yellow-500"
             value={userInput.title}
             onChange={handleUserInput}
           />
         </div>
       </div>
 
-      {/* Right section (instructor + category + description) */}
-      <div className="flex flex-col gap-4">
+      {/* RIGHT */}
+      <div className="flex flex-col gap-5">
+        {/* Instructor */}
         <div className="flex flex-col gap-1">
           <label htmlFor="createdBy" className="text-lg font-semibold">
             Course Instructor
@@ -144,12 +160,13 @@ return(
             name="createdBy"
             id="createdBy"
             placeholder="Enter Instructor Name"
-            className="bg-transparent px-3 py-2 border rounded-md"
+            className="bg-transparent px-3 py-2 border rounded-md focus:outline-yellow-500"
             value={userInput.createdBy}
             onChange={handleUserInput}
           />
         </div>
 
+        {/* Category */}
         <div className="flex flex-col gap-1">
           <label htmlFor="category" className="text-lg font-semibold">
             Course Category
@@ -160,12 +177,13 @@ return(
             name="category"
             id="category"
             placeholder="Enter Course Category"
-            className="bg-transparent px-3 py-2 border rounded-md"
+            className="bg-transparent px-3 py-2 border rounded-md focus:outline-yellow-500"
             value={userInput.category}
             onChange={handleUserInput}
           />
         </div>
 
+        {/* Description */}
         <div className="flex flex-col gap-1">
           <label htmlFor="description" className="text-lg font-semibold">
             Course Description
@@ -175,7 +193,7 @@ return(
             name="description"
             id="description"
             placeholder="Enter Course Description"
-            className="bg-transparent px-3 py-2 border rounded-md h-24 overflow-y-scroll resize-none"
+            className="bg-transparent px-3 py-2 border rounded-md h-24 sm:h-28 md:h-32 overflow-y-scroll resize-none focus:outline-yellow-500"
             value={userInput.description}
             onChange={handleUserInput}
           />
@@ -183,14 +201,21 @@ return(
       </div>
     </main>
 
+    {/* Submit button */}
     <button
       type="submit"
-      className="w-full bg-yellow-600 hover:bg-yellow-500 transition-all ease-in-out duration-300 py-3 rounded-md font-semibold text-lg cursor-pointer"
+      className="
+        w-full bg-yellow-600 hover:bg-yellow-500 
+        transition-all duration-300 py-3 
+        rounded-md font-semibold text-lg cursor-pointer
+      "
     >
       Create Course
     </button>
   </form>
 </div>
+
+         
        
     </HomeLayout>
 )
