@@ -1,4 +1,4 @@
-# Library Management Frontend
+# Learning  Management System Frontend
 ### Setup Instruction
  step-1 Clone the Project
 
